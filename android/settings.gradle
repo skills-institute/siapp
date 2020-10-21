@@ -1,0 +1,7 @@
+rootProject.name = 'Rise'
+include ':react-native-intercom'
+project(':react-native-intercom').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-intercom/android')
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
+include ':react-native-analytics-segment-io'
+project(':react-native-analytics-segment-io').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-analytics-segment-io/android')

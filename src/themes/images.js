@@ -1,0 +1,18 @@
+export const iconImages = [
+  require('../../assets/Icon/Tracker/X.png'),
+  require('../../assets/Icon/Pyramid/Green/01-FirstTouch.png'),
+  require('../../assets/Icon/Pyramid/Green/02-BallControl.png'),
+  require('../../assets/Icon/Pyramid/Green/03-Quickness.png'),
+  require('../../assets/Icon/Pyramid/Green/04-SoccerStrength.png'),
+  require('../../assets/Icon/Pyramid/Green/05-GeneralStrength.png'),
+  require('../../assets/Icon/Pyramid/Green/06-PassingCombos.png'),
+  require('../../assets/Icon/Pyramid/Green/07-QuickSkills.png'),
+  require('../../assets/Icon/Pyramid/Green/08-PowerAgility.png'),
+  require('../../assets/Icon/Pyramid/Green/09-PowerfulBursts.png'),
+  require('../../assets/Icon/Pyramid/Green/10-Creative.png'),
+  require('../../assets/Icon/Pyramid/Green/11-SoccerSpeed.png'),
+  require('../../assets/Icon/Pyramid/Green/12-SoccerPower.png'),
+  require('../../assets/Icon/Pyramid/Green/13-GameSpeedSkill.png'),
+  require('../../assets/Icon/Pyramid/Green/14-GameSpeedPower.png'),
+  require('../../assets/Icon/Pyramid/Green/15-SeasonalPrograms.png'),
+];

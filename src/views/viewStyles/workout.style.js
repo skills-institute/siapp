@@ -1,0 +1,126 @@
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
+
+export default StyleSheet.create({
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    backgroundColor: 'white',
+    height: height * 0.30,
+    width: width * 0.90,
+    borderRadius: 5,
+    paddingLeft: 15,
+    paddingRight: 15,
+  },
+  container: {
+    flex: 1,
+    paddingTop: 10,
+    flexDirection: 'column',
+    backgroundColor: '#232323',
+  },
+  imageStyle: {
+    width: width - 2,
+    height: width * 0.5625,
+  },
+  startWorkoutView: {
+    backgroundColor: '#41E893',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: width * 0.70,
+    borderRadius: 20,
+    height: 40,
+  },
+  startWorkoutText: {
+    color: '#4A4A4A',
+    backgroundColor: 'transparent',
+  },
+  iconStyle: {
+    height: 20,
+    width: 20,
+  },
+  skipWorkoutView: {
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: width * 0.70,
+    borderRadius: 20,
+    borderColor: '#FFFFFF',
+    borderWidth: 1,
+    height: 40,
+  },
+  skipWorkoutText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '500',
+    fontFamily: 'WorkSans-Regular',
+    backgroundColor: 'transparent',
+  },
+  textStyle: {
+    marginLeft: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#ce0e2d',
+  },
+  headerText: {
+    alignSelf: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#ce0e2d',
+  },
+  modalText: {
+    flex: 1,
+    fontFamily: 'WorkSans-Regular',
+    fontSize: 12,
+    color: '#000000',
+  },
+  modalStarView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 20,
+  },
+  confidenceStyling: {
+    flex: 1,
+    color: 'white',
+    backgroundColor: 'transparent',
+    paddingLeft: 20,
+    fontFamily: 'WorkSans-Regular',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  nextExerciseView: {
+    backgroundColor: '#ce0e2d',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: width * 0.70,
+    borderRadius: 20,
+    height: 40,
+  },
+  nextExerciseText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '500',
+    fontFamily: 'WorkSans-Regular',
+    backgroundColor: 'transparent',
+  },
+  backButton: {
+    flex: 1,
+    marginLeft: 20,
+    fontSize: 15,
+    color: '#4A4A4A',
+  },
+  keyFramePlayButton: {
+    position: 'absolute',
+    top: width * 0.5625 * 0.50 - 13,
+    left: width * 0.50 - 13,
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 32,
+    width: 32,
+  },
+  setRepRestTextStyle: {
+    fontSize: 14,
+    color: '#FFFFFF',
+    fontFamily: 'WorkSans-Regular',
+  },
+});
