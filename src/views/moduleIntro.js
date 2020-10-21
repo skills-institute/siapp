@@ -89,7 +89,7 @@ class ModuleIntro extends Component {
         });
       }
     });
-    overallRating = (totalRating / totalExercises).toFixed(1);
+    overallRating = totalExercises === 0 ? 0 : (totalRating / totalExercises).toFixed(1);
     return (
       <LinearGradient
         colors={['#000000', '#131313', '#272727']}

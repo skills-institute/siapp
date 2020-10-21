@@ -15,6 +15,12 @@ const defaultProps = {};
 class TeamIcons extends Component {
   render() {
     const teams = this.props.user.teams;
+    if (teams.length === 0) {
+      teams.push({
+        id: 0,
+        name: 'test'
+      })
+    }
     return (
       <View style={styles.container}>
         {teams

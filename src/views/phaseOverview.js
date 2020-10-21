@@ -450,7 +450,7 @@ class PhaseOverview extends Component {
         totalRating += exercise.confidenceRating;
       });
     });
-    overallRating = (totalRating / totalExercises).toFixed(1);
+    overallRating = totalExercises == 0 ? 0 : (totalRating / totalExercises).toFixed(1);
     const doesNotHaveVideo = phaseInfo.video === '/videos/original/missing.png';
     const videoURL = `http:${phaseInfo.video}`;
     const keyframeImage = `http:${phaseInfo.keyframe}`;

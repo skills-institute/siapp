@@ -205,11 +205,11 @@ class Workout extends Component {
   ) {
     const newRatings = this.state.ratings;
     newRatings[exerciseCounter] = rating;
-    const currentWorkoutId = this.state.workouts[this.state.workout].id;
+    const currentWorkoutId = this.state.workouts[this.state.workout]?.id;
     const workoutFilter = '&filter[workout_id]=';
     const getRatingPath =
       getRatingOfExercisePath +
-      currentExercise.id +
+      currentExercise?.id +
       workoutFilter +
       currentWorkoutId;
     this.setState({rated: true, ratings: newRatings});
@@ -217,20 +217,20 @@ class Workout extends Component {
     const createPostRatingToAPI = {
       type: 'confidence_ratings',
       attributes: {
-        user_id: this.props.users.id,
+        user_id: this.props.users?.id,
         workout_id: currentWorkoutId,
-        exercise_id: currentExercise.id,
+        exercise_id: currentExercise?.id,
         rating,
       },
     };
 
     const updatePostRatingToAPI = {
-      id: currentExercise.id,
+      id: currentExercise?.id,
       type: 'confidence_ratings',
       attributes: {
-        user_id: this.props.users.id,
+        user_id: this.props.users?.id,
         workout_id: currentWorkoutId,
-        exercise_id: currentExercise.id,
+        exercise_id: currentExercise?.id,
         rating,
       },
     };
@@ -371,13 +371,13 @@ class Workout extends Component {
   }
 
   render() {
-    const currentExercise = this.state.workouts[this.state.workout].exercises[
-      this.state.exercise
+    const currentExercise = this.state.workouts[this.state.workout]?.exercises[
+      this.state?.exercise
     ];
     const doesNotHaveVideo =
-      currentExercise.video === '/videos/original/missing.png';
-    const videoURL = `http:${currentExercise.video}`;
-    const keyframeImage = `http:${currentExercise.keyframeMedium}`;
+      currentExercise?.video === '/videos/original/missing.png';
+    const videoURL = `http:${currentExercise?.video}`;
+    const keyframeImage = `http:${currentExercise?.keyframeMedium}`;
     const {workouts, workout, exercise, exerciseCounter} = this.state;
     const {selectedPhase, moduleInfo} = this.props;
     return (
@@ -404,12 +404,13 @@ class Workout extends Component {
               alignItems: 'center',
             }}>
             <Text
-              onPress={() =>
+              onPress={() => {
+                if (!exercise) return;
                 this.backExercise(
                   this.props.moduleInfo.phases[this.props.selectedPhase - 1],
                   this.state.workouts,
                   this.props.selectedPhase,
-                )
+                )}
               }
               style={styles.backButton}>
               Back
@@ -478,26 +479,26 @@ class Workout extends Component {
           <ScrollView style={{flex: 2}}>
             <View style={{flex: 20}}>
               <Text style={styles.textStyle}>
-                {workouts[workout].exercises[exercise].exerciseName}
+                {workouts[workout]?.exercises[exercise].exerciseName}
               </Text>
               <View style={{height: 5}} />
               <View
                 style={{flexDirection: 'row', justifyContent: 'space-around'}}>
                 <Text style={styles.setRepRestTextStyle}>
-                  {workouts[workout].exercises[exercise].exerciseSetText}
+                  {workouts[workout]?.exercises[exercise].exerciseSetText}
                 </Text>
                 <Text style={styles.setRepRestTextStyle}>
-                  {workouts[workout].exercises[exercise].exerciseRepText}
+                  {workouts[workout]?.exercises[exercise].exerciseRepText}
                 </Text>
                 <Text style={styles.setRepRestTextStyle}>
-                  {workouts[workout].exercises[exercise].exerciseRestText}
+                  {workouts[workout]?.exercises[exercise].exerciseRestText}
                 </Text>
               </View>
               <View style={{alignItems: 'center', justifyContent: 'center'}}>
                 <View style={{height: 5}} />
                 <View style={{marginLeft: 20, marginRight: 20}}>
                   <CustomText>
-                    {workouts[workout].exercises[exercise].exerciseDescription}
+                    {workouts[workout]?.exercises[exercise].exerciseDescription}
                   </CustomText>
                 </View>
                 <View style={{height: 5}} />
@@ -521,24 +522,26 @@ class Workout extends Component {
                     smallStars={false}
                     rating={
                       moduleInfo.phases[selectedPhase - 1].workouts[workout]
-                        .exercises[exercise].confidenceRating
+                        ?.exercises[exercise].confidenceRating
                     }
-                    onPress={(rating) =>
-                      this.rateExercise(
+                    onPress={(rating) => { 
+                        if (!exercise) return;
+                        this.rateExercise(
                         rating,
                         selectedPhase,
                         workout,
                         exercise,
                         currentExercise,
                         exerciseCounter,
-                      )
+                      )}
                     }
                   />
                 ) : (
                   <StarRating
                     smallStars={false}
                     rating={0}
-                    onPress={(rating) =>
+                    onPress={(rating) => {
+                      if (!exercise) return;
                       this.rateExercise(
                         rating,
                         selectedPhase,
@@ -546,7 +549,7 @@ class Workout extends Component {
                         exercise,
                         currentExercise,
                         exerciseCounter,
-                      )
+                      )}
                     }
                   />
                 )}
@@ -566,12 +569,13 @@ class Workout extends Component {
                   </TouchableWithoutFeedback>
                 ) : (
                   <TouchableWithoutFeedback
-                    onPress={() =>
+                    onPress={() => {
+                      if (!exercise) return;
                       this.nextExercise(
                         moduleInfo.phases[selectedPhase - 1],
                         workouts,
                         selectedPhase,
-                      )
+                      )}
                     }>
                     <View style={styles.skipWorkoutView}>
                       <Text style={styles.skipWorkoutText}>SKIP</Text>
