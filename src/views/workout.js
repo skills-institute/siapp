@@ -405,7 +405,7 @@ class Workout extends Component {
             }}>
             <Text
               onPress={() => {
-                if (!exercise) return;
+                if (!currentExercise) return;
                 this.backExercise(
                   this.props.moduleInfo.phases[this.props.selectedPhase - 1],
                   this.state.workouts,
@@ -525,7 +525,7 @@ class Workout extends Component {
                         ?.exercises[exercise].confidenceRating
                     }
                     onPress={(rating) => { 
-                        if (!exercise) return;
+                        if (!currentExercise) return;
                         this.rateExercise(
                         rating,
                         selectedPhase,
@@ -541,7 +541,8 @@ class Workout extends Component {
                     smallStars={false}
                     rating={0}
                     onPress={(rating) => {
-                      if (!exercise) return;
+                      if (!currentExercise) return;
+                      console.log('exercise', exercise);
                       this.rateExercise(
                         rating,
                         selectedPhase,
@@ -570,7 +571,7 @@ class Workout extends Component {
                 ) : (
                   <TouchableWithoutFeedback
                     onPress={() => {
-                      if (!exercise) return;
+                      if (!currentExercise) return;
                       this.nextExercise(
                         moduleInfo.phases[selectedPhase - 1],
                         workouts,
