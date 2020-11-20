@@ -24,7 +24,7 @@ export default StyleSheet.create({
     height: width * 0.5625,
   },
   startWorkoutView: {
-    backgroundColor: '#41E893',
+    backgroundColor: '#ce0e2d',
     alignItems: 'center',
     justifyContent: 'center',
     width: width * 0.70,
@@ -32,7 +32,7 @@ export default StyleSheet.create({
     height: 40,
   },
   startWorkoutText: {
-    color: '#4A4A4A',
+    color: '#fff',
     backgroundColor: 'transparent',
   },
   iconStyle: {
