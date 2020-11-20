@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import {Text, View} from 'react-native';
 import styles from './componentStyles/customText.style';
 
 const propTypes = {
@@ -9,8 +9,8 @@ const propTypes = {
 
 const defaultProps = {};
 
-const CustomText = ({ style = {}, txtStyle = {}, children }) => {
-  const { textStyle, viewStyle } = styles;
+const CustomText = ({style = {}, txtStyle = {}, children}) => {
+  const {textStyle, viewStyle} = styles;
 
   return (
     <View style={[viewStyle, style]}>
