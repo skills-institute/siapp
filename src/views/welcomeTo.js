@@ -72,19 +72,23 @@ class WelcomeTo extends Component {
             ) : (
               <View style={{}}>
                 <View style={{alignItems: 'center'}}>
-                  <CustomText>Skills Institute is where soccer takes center stage.</CustomText>
-                  <CustomText>Rooted in child development theory, kids have a blast</CustomText>
-                  <CustomText>Players will walk away more confident, equipped for</CustomText>
-                  <CustomText>their next right step, and ready for life’s challenges on</CustomText>
-                  <CustomText>and off the field.</CustomText>
+                  <CustomText>
+                    Skills Institute is where soccer takes center stage.
+                  </CustomText>
+                  <CustomText>
+                    Rooted in child development theory, kids have a blast
+                  </CustomText>
+                  <CustomText>
+                    Players will walk away more confident, equipped for their
+                    next right step, and ready for life’s challenges on and off
+                    the field.
+                  </CustomText>
                 </View>
                 <View style={{height: 10}} />
                 <View style={{alignItems: 'center'}}>
-                  <CustomText>This application guides individual players with training plans</CustomText>
                   <CustomText>
-                    and videos to grow your skills and achieve the three
-                  </CustomText>
-                  <CustomText>
+                    This application guides individual players with training
+                    plans and videos to grow your skills and achieve the three
                     pillars of Skill Institute:
                   </CustomText>
                 </View>
