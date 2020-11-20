@@ -20,7 +20,7 @@ export default StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     fontFamily: 'WorkSans-Regular',
-    color: '#ce0e2d',
+    color: '#fff',
   },
   workoutView: {
     flex: 1,

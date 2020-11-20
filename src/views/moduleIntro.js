@@ -106,10 +106,10 @@ class ModuleIntro extends Component {
             source={iconImages[this.props.moduleInfo.module]}
           />
           <Text style={styles.subHeaderText}>
-            {this.props.moduleInfo.moduleName}
+            {this.props.moduleInfo.moduleTrack}
           </Text>
           <Text style={styles.headerText}>
-            {this.props.moduleInfo.moduleTrack.toUpperCase()}
+            {this.props.moduleInfo.moduleName.toUpperCase()}
           </Text>
         </View>
         {this.state.playIntro ? (

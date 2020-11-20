@@ -317,7 +317,7 @@ class Workout extends Component {
             </View>
           </TouchableWithoutFeedback>
           <Text style={[styles.headerText, {flex: 10, textAlign: 'center'}]}>
-            How Did You Do
+            How Did You Do?
           </Text>
           <View style={{flex: 1}} />
         </View>
@@ -355,9 +355,7 @@ class Workout extends Component {
         </View>
         <View style={{height: 10}} />
         <View style={styles.modalStarView}>
-          <Text style={styles.modalText}>
-            Super great
-          </Text>
+          <Text style={styles.modalText}>Super great</Text>
           <Image style={{height: 12, width: 12}} source={starFilled} />
           <View style={{width: 4}} />
           <Image style={{height: 12, width: 12}} source={starFilled} />
@@ -381,214 +379,238 @@ class Workout extends Component {
     const {workouts, workout, exercise, exerciseCounter} = this.state;
     const {selectedPhase, moduleInfo} = this.props;
     return (
-      <View style={styles.container}>
-        <View style={{flex: 3}}>
-          <Modal
-            animationType={'slide'}
-            transparent
-            visible={this.state.modalVisible}
-            onRequestClose={() => Alert('Modal has been closed.')}>
+      <>
+        <View style={styles.container}>
+          <View style={{flex: 3}}>
+            <Modal
+              animationType={'slide'}
+              transparent
+              visible={this.state.modalVisible}
+              onRequestClose={() => Alert('Modal has been closed.')}>
+              <View
+                style={{
+                  flex: 1,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                {this.renderModal()}
+              </View>
+            </Modal>
             <View
-              style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-              {this.renderModal()}
+              style={{
+                flex: 1,
+                marginTop: 20,
+                marginBottom: 10,
+                marginRight: 20,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Text
+                onPress={() => {
+                  if (!currentExercise) {
+                    return;
+                  }
+                  this.backExercise(
+                    this.props.moduleInfo.phases[this.props.selectedPhase - 1],
+                    this.state.workouts,
+                    this.props.selectedPhase,
+                  );
+                }}
+                style={styles.backButton}>
+                Back
+              </Text>
+              <Text
+                style={[
+                  styles.headerText,
+                  {color: '#FFFFFF'},
+                ]}>{`Exercise ${this.state.exerciseCounter} of ${this.state.totalExerciseCount}`}</Text>
+              <Text
+                onPress={Actions.pop}
+                style={[styles.backButton, {textAlign: 'right'}]}>
+                Exit Phase
+              </Text>
             </View>
-          </Modal>
-          <View
-            style={{
-              flex: 1,
-              marginTop: 20,
-              marginBottom: 10,
-              marginRight: 20,
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text
-              onPress={() => {
-                if (!currentExercise) return;
-                this.backExercise(
-                  this.props.moduleInfo.phases[this.props.selectedPhase - 1],
-                  this.state.workouts,
-                  this.props.selectedPhase,
+            <View style={{flex: 12}}>
+              <ScrollView scrollEnabled={false}>
+                {this.state.showKeyframe || doesNotHaveVideo ? (
+                  <View style={{flex: 1}}>
+                    <TouchableWithoutFeedback
+                      onPress={() => this.keyFrameTouched()}>
+                      <ImageBackground
+                        resizeMode="contain"
+                        style={[
+                          styles.imageStyle,
+                          {borderWidth: 1, borderColor: '#FFFFFF'},
+                        ]}
+                        source={{uri: keyframeImage}}>
+                        {doesNotHaveVideo ? (
+                          <View />
+                        ) : (
+                          <TouchableWithoutFeedback
+                            onPress={() => this.keyFrameTouched()}>
+                            <ImageBackground
+                              style={styles.keyFramePlayButton}
+                              source={require('../../assets/Buttons/Play-w.png')}
+                            />
+                          </TouchableWithoutFeedback>
+                        )}
+                      </ImageBackground>
+                    </TouchableWithoutFeedback>
+                  </View>
+                ) : (
+                  <View style={{flex: 1}}>
+                    <VideoPlayer
+                      isFullscreen={false}
+                      seekColor={'#FF0000'}
+                      paused={false}
+                      autoplay
+                      title={''}
+                      controlTimeout={2000}
+                      videoStyle={{}}
+                      resizeMode={'contain'} // Style appended to <Video> component
+                      style={{width, height: width * 0.5625}} // Style appended to <View> container
+                      onError={() => {}} // Fired when an error is encountered on load
+                      onBack={() => {}} // Function fired when back button is pressed.
+                      onEnd={() => {}} // Fired when the video is complete.
+                      source={{uri: videoURL}}
+                    />
+                  </View>
                 )}
-              }
-              style={styles.backButton}>
-              Back
-            </Text>
-            <Text
-              style={[
-                styles.headerText,
-                {color: '#FFFFFF'},
-              ]}>{`Exercise ${this.state.exerciseCounter} of ${this.state.totalExerciseCount}`}</Text>
-            <Text
-              onPress={Actions.pop}
-              style={[styles.backButton, {textAlign: 'right'}]}>
-              Exit Phase
-            </Text>
+              </ScrollView>
+            </View>
           </View>
-          <View style={{flex: 12}}>
-            <ScrollView scrollEnabled={false}>
-              {this.state.showKeyframe || doesNotHaveVideo ? (
-                <View style={{flex: 1}}>
-                  <TouchableWithoutFeedback
-                    onPress={() => this.keyFrameTouched()}>
-                    <ImageBackground
-                      resizeMode="contain"
-                      style={[
-                        styles.imageStyle,
-                        {borderWidth: 1, borderColor: '#FFFFFF'},
-                      ]}
-                      source={{uri: keyframeImage}}>
-                      {doesNotHaveVideo ? (
-                        <View />
-                      ) : (
-                        <TouchableWithoutFeedback
-                          onPress={() => this.keyFrameTouched()}>
-                          <ImageBackground
-                            style={styles.keyFramePlayButton}
-                            source={require('../../assets/Buttons/Play-w.png')}
-                          />
-                        </TouchableWithoutFeedback>
-                      )}
-                    </ImageBackground>
-                  </TouchableWithoutFeedback>
+          <View style={{flex: 4}}>
+            <ScrollView style={{flex: 2}}>
+              <View style={{flex: 20}}>
+                <Text style={styles.textStyle}>
+                  {workouts[workout]?.exercises[exercise].exerciseName}
+                </Text>
+                <View style={{height: 5}} />
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-around',
+                  }}>
+                  <Text style={styles.setRepRestTextStyle}>
+                    {workouts[workout]?.exercises[exercise].exerciseSetText}
+                  </Text>
+                  <Text style={styles.setRepRestTextStyle}>
+                    {workouts[workout]?.exercises[exercise].exerciseRepText}
+                  </Text>
+                  <Text style={styles.setRepRestTextStyle}>
+                    {workouts[workout]?.exercises[exercise].exerciseRestText}
+                  </Text>
                 </View>
-              ) : (
-                <View style={{flex: 1}}>
-                  <VideoPlayer
-                    isFullscreen={false}
-                    seekColor={'#FF0000'}
-                    paused={false}
-                    autoplay
-                    title={''}
-                    controlTimeout={2000}
-                    videoStyle={{}}
-                    resizeMode={'contain'} // Style appended to <Video> component
-                    style={{width, height: width * 0.5625}} // Style appended to <View> container
-                    onError={() => {}} // Fired when an error is encountered on load
-                    onBack={() => {}} // Function fired when back button is pressed.
-                    onEnd={() => {}} // Fired when the video is complete.
-                    source={{uri: videoURL}}
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                  <View style={{height: 5}} />
+                  <View style={{marginLeft: 20, marginRight: 20}}>
+                    <CustomText>
+                      {
+                        workouts[workout]?.exercises[exercise]
+                          .exerciseDescription
+                      }
+                    </CustomText>
+                  </View>
+                  <View style={{height: 5}} />
+                  <View
+                    style={{height: 4, width, backgroundColor: '#000000'}}
                   />
+                  <View style={{height: 5}} />
+                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Text style={styles.confidenceStyling}>
+                      How Did You Do?
+                    </Text>
+                    <View style={{width: 20}} />
+                    <TouchableWithoutFeedback onPress={this.openModal}>
+                      <Image
+                        style={{height: 16, width: 16, marginRight: 20}}
+                        source={require('../../assets/Icon/Info-W.png')}
+                      />
+                    </TouchableWithoutFeedback>
+                  </View>
+                  <View style={{height: 20}} />
+                  {this.state.ratings[exerciseCounter] > 0 ? (
+                    <StarRating
+                      smallStars={false}
+                      rating={
+                        moduleInfo.phases[selectedPhase - 1].workouts[workout]
+                          ?.exercises[exercise].confidenceRating
+                      }
+                      onPress={(rating) => {
+                        if (!currentExercise) {
+                          return;
+                        }
+                        this.rateExercise(
+                          rating,
+                          selectedPhase,
+                          workout,
+                          exercise,
+                          currentExercise,
+                          exerciseCounter,
+                        );
+                      }}
+                    />
+                  ) : (
+                    <StarRating
+                      smallStars={false}
+                      rating={0}
+                      onPress={(rating) => {
+                        if (!currentExercise) {
+                          return;
+                        }
+                        console.log('exercise', exercise);
+                        this.rateExercise(
+                          rating,
+                          selectedPhase,
+                          workout,
+                          exercise,
+                          currentExercise,
+                          exerciseCounter,
+                        );
+                      }}
+                    />
+                  )}
+                  <View style={{height: 20}} />
+                  {this.state.rated ? (
+                    <TouchableWithoutFeedback
+                      onPress={() =>
+                        this.nextExercise(
+                          moduleInfo.phases[selectedPhase - 1],
+                          workouts,
+                          selectedPhase,
+                        )
+                      }>
+                      <View style={styles.nextExerciseView}>
+                        <Text style={styles.nextExerciseText}>
+                          Next Exercise
+                        </Text>
+                      </View>
+                    </TouchableWithoutFeedback>
+                  ) : (
+                    <TouchableWithoutFeedback
+                      onPress={() => {
+                        if (!currentExercise) {
+                          return;
+                        }
+                        this.nextExercise(
+                          moduleInfo.phases[selectedPhase - 1],
+                          workouts,
+                          selectedPhase,
+                        );
+                      }}>
+                      <View style={styles.skipWorkoutView}>
+                        <Text style={styles.skipWorkoutText}>SKIP</Text>
+                      </View>
+                    </TouchableWithoutFeedback>
+                  )}
+                  <View style={{height: 20}} />
                 </View>
-              )}
+              </View>
             </ScrollView>
           </View>
         </View>
-        <View style={{flex: 4}}>
-          <ScrollView style={{flex: 2}}>
-            <View style={{flex: 20}}>
-              <Text style={styles.textStyle}>
-                {workouts[workout]?.exercises[exercise].exerciseName}
-              </Text>
-              <View style={{height: 5}} />
-              <View
-                style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-                <Text style={styles.setRepRestTextStyle}>
-                  {workouts[workout]?.exercises[exercise].exerciseSetText}
-                </Text>
-                <Text style={styles.setRepRestTextStyle}>
-                  {workouts[workout]?.exercises[exercise].exerciseRepText}
-                </Text>
-                <Text style={styles.setRepRestTextStyle}>
-                  {workouts[workout]?.exercises[exercise].exerciseRestText}
-                </Text>
-              </View>
-              <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                <View style={{height: 5}} />
-                <View style={{marginLeft: 20, marginRight: 20}}>
-                  <CustomText>
-                    {workouts[workout]?.exercises[exercise].exerciseDescription}
-                  </CustomText>
-                </View>
-                <View style={{height: 5}} />
-                <View style={{height: 4, width, backgroundColor: '#000000'}} />
-                <View style={{height: 5}} />
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                  <Text style={styles.confidenceStyling}>
-                    How Did You Do
-                  </Text>
-                  <View style={{width: 20}} />
-                  <TouchableWithoutFeedback onPress={this.openModal}>
-                    <Image
-                      style={{height: 16, width: 16, marginRight: 20}}
-                      source={require('../../assets/Icon/Info-W.png')}
-                    />
-                  </TouchableWithoutFeedback>
-                </View>
-                <View style={{height: 20}} />
-                {this.state.ratings[exerciseCounter] > 0 ? (
-                  <StarRating
-                    smallStars={false}
-                    rating={
-                      moduleInfo.phases[selectedPhase - 1].workouts[workout]
-                        ?.exercises[exercise].confidenceRating
-                    }
-                    onPress={(rating) => { 
-                        if (!currentExercise) return;
-                        this.rateExercise(
-                        rating,
-                        selectedPhase,
-                        workout,
-                        exercise,
-                        currentExercise,
-                        exerciseCounter,
-                      )}
-                    }
-                  />
-                ) : (
-                  <StarRating
-                    smallStars={false}
-                    rating={0}
-                    onPress={(rating) => {
-                      if (!currentExercise) return;
-                      console.log('exercise', exercise);
-                      this.rateExercise(
-                        rating,
-                        selectedPhase,
-                        workout,
-                        exercise,
-                        currentExercise,
-                        exerciseCounter,
-                      )}
-                    }
-                  />
-                )}
-                <View style={{height: 20}} />
-                {this.state.rated ? (
-                  <TouchableWithoutFeedback
-                    onPress={() =>
-                      this.nextExercise(
-                        moduleInfo.phases[selectedPhase - 1],
-                        workouts,
-                        selectedPhase,
-                      )
-                    }>
-                    <View style={styles.nextExerciseView}>
-                      <Text style={styles.nextExerciseText}>Next Exercise</Text>
-                    </View>
-                  </TouchableWithoutFeedback>
-                ) : (
-                  <TouchableWithoutFeedback
-                    onPress={() => {
-                      if (!currentExercise) return;
-                      this.nextExercise(
-                        moduleInfo.phases[selectedPhase - 1],
-                        workouts,
-                        selectedPhase,
-                      )}
-                    }>
-                    <View style={styles.skipWorkoutView}>
-                      <Text style={styles.skipWorkoutText}>SKIP</Text>
-                    </View>
-                  </TouchableWithoutFeedback>
-                )}
-                <View style={{height: 20}} />
-              </View>
-            </View>
-          </ScrollView>
-        </View>
-      </View>
+      </>
     );
   }
 }

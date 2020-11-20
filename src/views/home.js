@@ -69,7 +69,7 @@ class athletefitapp extends Component {
             fontSize: 14,
             fontFamily: 'WorkSans-Regular',
           }}>
-          Powered by LIL'KICKERS
+          Powered by LIL’ KICKERS, INC.
         </Text>
         <View style={{height: 20}} />
         <Text />
