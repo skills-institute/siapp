@@ -24,8 +24,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   imageStyle: {
-    height: 177,
-    width: 177,
+    height: 300,
+    width: 300,
   },
   textStyle: {
     backgroundColor: 'transparent',

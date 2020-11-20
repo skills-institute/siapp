@@ -23,13 +23,15 @@ export default StyleSheet.create({
     fontFamily: 'Montserrat-Regular',
     fontSize: 15,
     backgroundColor: 'transparent',
+    textTransform: 'capitalize',
   },
   headerText: {
     color: '#FFFFFF',
     opacity: 0.5,
     fontFamily: 'Montserrat-Regular',
     fontWeight: 'bold',
-    fontSize: 55,
+    textAlign: 'center',
+    fontSize: 40,
     backgroundColor: 'transparent',
   },
   iconStyle: {
