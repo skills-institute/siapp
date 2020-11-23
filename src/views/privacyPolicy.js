@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import {View, ScrollView, Alert, Text} from 'react-native';
 import PropTypes from 'prop-types';
 import {readEndpoint} from 'redux-json-api';
-/* eslint-disable import/extensions */
 import LinearGradient from 'react-native-linear-gradient';
-/* eslint-enable import/extensions */
 import Analytics from '@segment/analytics-react-native';
 import {connect} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
@@ -13,6 +11,7 @@ import SimpleButton from '../components/simpleButton';
 import Header from '../components/header';
 import {setPrivacyPolicy} from '../actions/userActions';
 import styles from './viewStyles/privacyPolicy.style';
+import HTML from 'react-native-render-html';
 
 const propTypes = {
   users: PropTypes.object.isRequired,
@@ -43,6 +42,10 @@ class PrivacyPolicy extends Component {
   }
 
   render() {
+    console.log(
+      'this.props.users.privacyPolicy',
+      this.props.users.privacyPolicy,
+    );
     return (
       <LinearGradient
         colors={['#000000', '#131313', '#272727']}
@@ -52,9 +55,20 @@ class PrivacyPolicy extends Component {
         </View>
         <View style={{flex: 4, justifyContent: 'center'}}>
           <ScrollView style={{backgroundColor: 'transparent'}}>
-            <Text style={styles.textStyle}>
+            {/* <Text style={styles.textStyle}>
               {this.props.users.privacyPolicy}
-            </Text>
+            </Text> */}
+            <HTML
+              html={this.props.users.privacyPolicy}
+              tagsStyles={{
+                h1: {color: '#fff'},
+                strong: {color: '#fff'},
+                div: {color: '#fff'},
+                li: {color: '#fff'},
+                before: {color: '#fff'},
+                'li::before': {color: '#fff'},
+              }}
+            />
           </ScrollView>
         </View>
         <View style={{flex: 1, justifyContent: 'center'}}>
