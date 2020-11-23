@@ -55,9 +55,6 @@ class PrivacyPolicy extends Component {
         </View>
         <View style={{flex: 4, justifyContent: 'center'}}>
           <ScrollView style={{backgroundColor: 'transparent'}}>
-            {/* <Text style={styles.textStyle}>
-              {this.props.users.privacyPolicy}
-            </Text> */}
             <HTML
               html={this.props.users.privacyPolicy}
               tagsStyles={{
