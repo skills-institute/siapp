@@ -56,8 +56,22 @@ class TermsOfService extends Component {
                 strong: {color: '#fff'},
                 div: {color: '#fff'},
                 li: {color: '#fff'},
-                before: {color: '#fff'},
-                'li::before': {color: '#fff'},
+              }}
+              listsPrefixesRenderers={{
+                ol: () => {
+                  return (
+                    <Text style={{color: '#ce0e2d', fontSize: 8, marginTop: 4}}>
+                      ■{' '}
+                    </Text>
+                  );
+                },
+                ul: () => {
+                  return (
+                    <Text style={{color: '#ce0e2d', fontSize: 8, marginTop: 4}}>
+                      ■{' '}
+                    </Text>
+                  );
+                },
               }}
             />
           </ScrollView>

@@ -42,10 +42,6 @@ class PrivacyPolicy extends Component {
   }
 
   render() {
-    console.log(
-      'this.props.users.privacyPolicy',
-      this.props.users.privacyPolicy,
-    );
     return (
       <LinearGradient
         colors={['#000000', '#131313', '#272727']}
@@ -62,8 +58,22 @@ class PrivacyPolicy extends Component {
                 strong: {color: '#fff'},
                 div: {color: '#fff'},
                 li: {color: '#fff'},
-                before: {color: '#fff'},
-                'li::before': {color: '#fff'},
+              }}
+              listsPrefixesRenderers={{
+                ol: () => {
+                  return (
+                    <Text style={{color: '#ce0e2d', fontSize: 8, marginTop: 4}}>
+                      ■{' '}
+                    </Text>
+                  );
+                },
+                ul: () => {
+                  return (
+                    <Text style={{color: '#ce0e2d', fontSize: 8, marginTop: 4}}>
+                      ■{' '}
+                    </Text>
+                  );
+                },
               }}
             />
           </ScrollView>
