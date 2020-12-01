@@ -55,7 +55,7 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
-    Intercom.initialize(this, "android_sdk-87864a5644843e4c5bffd2ac7daebb5a5ff66859", "edx9uvwa");
+    Intercom.initialize(this, "android_sdk-57740c0aa385fe843fba02b16f1d5c261c4524e1", "s3oev6hv");
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
     Fabric.with(this, new Crashlytics());

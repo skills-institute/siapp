@@ -31,7 +31,7 @@ static void InitializeFlipper(UIApplication *application) {
   InitializeFlipper(application);
 #endif
 
-  [Intercom setApiKey:@"ios_sdk-b95fbbb9270aaadc4a786fa4978887057a5078e4" forAppId:@"edx9uvwa"];
+  [Intercom setApiKey:@"ios_sdk-e5571f5351e3abf458b9b8320ab2a8898e7b493f" forAppId:@"s3oev6hv"];
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"Rise"
