@@ -121,7 +121,7 @@ class NavigationRouter extends Component {
                 renderBackButton={() => null}
                 hideNavBar={false}
                 component={WelcomeTo}
-                title="WELCOME TO RISE"
+                title="WELCOME TO SKILLS INSTITUTE"
               />
               <Scene
                 key="welcomeBack"
