@@ -140,7 +140,7 @@ class CompleteWorkout extends Component {
               <Image
                 resizeMode="contain"
                 style={styles.ringStyle}
-                source={require('../../assets/Element/CoverRing/Ring Complete.png')}
+                source={require('../../assets/images/golden-trophy.png')}
               />
             </View>
           </View>

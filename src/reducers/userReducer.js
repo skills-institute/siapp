@@ -402,23 +402,25 @@ export default (state = funcDefaultState, action) => {
         let rightChildRating = 0;
         let totalExercises = 0;
         let totalRating = 0;
-        newState[`module${childModuleLeft}`].phases.map((phase, phaseIndex) => {
-          if (phaseIndex < 3) {
-            phase.workouts.map((workout) => {
-              workout.exercises.map((exercise) => {
-                totalExercises += 1;
-                totalRating += exercise.confidenceRating;
+        newState[`module${childModuleLeft}`]?.phases.map(
+          (phase, phaseIndex) => {
+            if (phaseIndex < 3) {
+              phase.workouts.map((workout) => {
+                workout.exercises.map((exercise) => {
+                  totalExercises += 1;
+                  totalRating += exercise.confidenceRating;
+                  return 0;
+                });
                 return 0;
               });
-              return 0;
-            });
-          }
-          return 0;
-        });
+            }
+            return 0;
+          },
+        );
         leftChildRating = (totalRating / totalExercises).toFixed(1);
         totalRating = 0;
         totalExercises = 0;
-        newState[`module${childModuleRight}`].phases.map(
+        newState[`module${childModuleRight}`]?.phases.map(
           (phase, phaseIndex) => {
             if (phaseIndex < 3) {
               phase.workouts.map((workout) => {

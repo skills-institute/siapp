@@ -149,7 +149,7 @@ class CompletePhaseNotFourStars extends Component {
     let totalExercises = 0;
     let totalRating = 0;
     let phaseRating = 0;
-    moduleInfo.phases[selectedPhase - 1].workouts.map((workout) => {
+    moduleInfo.phases[selectedPhase - 1]?.workouts.map((workout) => {
       workout.exercises.map((exercise) => {
         totalExercises += 1;
         totalRating += exercise.confidenceRating;

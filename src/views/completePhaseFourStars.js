@@ -65,6 +65,7 @@ class CompletePhaseFourStars extends Component {
     const activeSubscription = this.props.users.activeSubscription;
     const {selectedPhase, moduleInfo} = this.props;
     const largeFilledStar = require('../../assets/Icon/StarLargeFilled.png');
+    const goldenTrophy = require('../../assets/images/golden-trophy.png');
 
     return (
       <View style={styles.container}>
@@ -78,59 +79,16 @@ class CompletePhaseFourStars extends Component {
           <Text style={styles.headerText}>{moduleInfo.moduleName} </Text>
           <Text style={styles.headerText}>{`PHASE ${selectedPhase}`}</Text>
           <Text style={styles.completionText}>FUN & DONE</Text>
-          {activeSubscription ? (
-            <View
-              style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-              <View style={{flexDirection: 'row'}}>
-                <Image
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source={largeFilledStar}
-                />
-                <Image
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source={largeFilledStar}
-                />
-                <Image
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source={largeFilledStar}
-                />
-                <Image
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source={largeFilledStar}
-                />
-              </View>
+          <View
+            style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                resizeMode="contain"
+                style={styles.goldenTrophy}
+                source={goldenTrophy}
+              />
             </View>
-          ) : (
-            <View
-              style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-              <View style={{flexDirection: 'row'}}>
-                <Image
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source={largeFilledStar}
-                />
-                <Image
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source={largeFilledStar}
-                />
-                <Image
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source={largeFilledStar}
-                />
-                <Image
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source={largeFilledStar}
-                />
-              </View>
-            </View>
-          )}
+          </View>
         </View>
         <View
           style={{
