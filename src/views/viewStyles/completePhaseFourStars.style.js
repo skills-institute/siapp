@@ -1,6 +1,6 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
@@ -14,6 +14,10 @@ export default StyleSheet.create({
     width: 40,
     marginLeft: 3,
     marginRight: 3,
+  },
+  goldenTrophy: {
+    height: 250,
+    width: 250,
   },
   headerText: {
     fontSize: 32,
@@ -36,7 +40,7 @@ export default StyleSheet.create({
     backgroundColor: '#000000',
     alignItems: 'center',
     justifyContent: 'center',
-    width: width * 0.70,
+    width: width * 0.7,
     borderRadius: 20,
     height: 40,
   },

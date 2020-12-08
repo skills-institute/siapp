@@ -331,8 +331,8 @@ PODS:
     - React
   - RNReanimated (1.13.1):
     - React
-  - RNScreens (2.12.0):
-    - React-Core
+  - RNScreens (2.11.0):
+    - React
   - RNSVG (12.1.0):
     - React
   - Segment-Intercom (1.0.1):
@@ -552,7 +552,7 @@ SPEC CHECKSUMS:
   RNAnalyticsIntegration-Intercom: b0d796693413afcf3d45829089c875ca33243fbc
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
-  RNScreens: 4b488fdf9537bbce829e2910c8cce1d17f6d9be8
+  RNScreens: 0e91da98ab26d5d04c7b59a9b6bd694124caf88c
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   Segment-Intercom: 67aea209ece5a58af6a7adf94b70978d5f811400
   Yoga: 7740b94929bbacbddda59bf115b5317e9a161598
@@ -560,4 +560,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: fff2f785e63ac566ded85ba56a4542f67d60434c
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.9.3
