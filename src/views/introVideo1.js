@@ -55,7 +55,7 @@ class Video1 extends Component {
               onError={() => {}} // Fired when an error is encountered on load
               onBack={() => {}} // Function fired when back button is pressed.
               onEnd={() => {}} // Fired when the video is complete.
-              source={require('../../assets/videos/Tutorial_1-PyramidFinal.mp4')}
+              source={require('../../assets/videos/SI_App_Tutorial_Video.mp4')}
             />
           )}
         </View>
@@ -64,29 +64,20 @@ class Video1 extends Component {
             <SimpleButton
               onPress={() => {
                 this.setState({hideVideo: true});
-                Analytics.screen('Intro Video 2');
-                Actions.introVideo2({
-                  reviewOnboarding: this.props.reviewOnboarding,
-                });
+                if (this.props.reviewOnboarding) {
+                  Analytics.screen('Pyramid');
+                  Actions.landing();
+                } else {
+                  Analytics.screen('Terms of Service');
+                  Actions.termsOfService();
+                }
               }}>
               Next
             </SimpleButton>
           </View>
         </View>
         <View style={{flex: 1, justifyContent: 'flex-end', marginBottom: 20}}>
-          {this.props.reviewOnboarding ? (
-            <View style={{flexDirection: 'row'}}>
-              <View style={styles.trackingCircleFullView} />
-              <View style={styles.trackingCircleEmptyView} />
-              <View style={styles.trackingCircleEmptyView} />
-            </View>
-          ) : (
-            <View style={{flexDirection: 'row'}}>
-              <View style={styles.trackingCircleFullView} />
-              <View style={styles.trackingCircleEmptyView} />
-              <View style={styles.trackingCircleEmptyView} />
-            </View>
-          )}
+          <View style={{flexDirection: 'row'}} />
         </View>
       </LinearGradient>
     );

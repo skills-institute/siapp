@@ -24,7 +24,7 @@ const PPDeclined = () => {
   // TODO Create a util/alert.js file to house alerts.
   Alert.alert(
     'Privacy Policy',
-    'You must accept the Privacy Policy to use the Rise App.',
+    'You must accept the Privacy Policy to use the Skills Institute App.',
     [{text: 'OK'}],
     {cancelable: false},
   );

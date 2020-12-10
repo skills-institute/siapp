@@ -27,7 +27,7 @@ const defaultProps = {
 const TOSDeclined = () => {
   Alert.alert(
     'Terms of Service',
-    'You must agree to the Terms of Service to use the Rise App.',
+    'You must agree to the Terms of Service to use the Skills Institute App.',
     [{text: 'OK'}],
     {cancelable: false},
   );
