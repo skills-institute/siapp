@@ -29,8 +29,6 @@ import VideoTest from '../../views/videoTest';
 import SupplementalOverview from '../../views/supplementalOverview';
 import BlankInitialScreen from '../../views/blankInitialScreen';
 import IntroVideo1 from '../../views/introVideo1';
-import IntroVideo2 from '../../views/introVideo2';
-import IntroVideo3 from '../../views/introVideo3';
 import AgeVerification from '../../views/ageVerification';
 import AgeVerificationFailed from '../../views/ageVerificationFailed';
 
@@ -63,6 +61,7 @@ class NavigationRouter extends Component {
                 fontSize: 16,
                 fontFamily: 'Montserrat-Regular',
                 color: '#ce0e2d',
+                width: '100%',
               }}>
               <Scene
                 key="blankInitialScreen"
@@ -113,7 +112,7 @@ class NavigationRouter extends Component {
                 renderBackButton={() => null}
                 hideNavBar={false}
                 component={EnterCode}
-                title="ENTER CLASS CODE"
+                title="ENTER PROMO CODE"
               />
               <Scene
                 key="welcomeTo"
@@ -185,20 +184,6 @@ class NavigationRouter extends Component {
                 sceneStyle={{backgroundColor: 'black'}}
                 hideNavBar
                 component={IntroVideo1}
-                title=""
-              />
-              <Scene
-                key="introVideo2"
-                sceneStyle={{backgroundColor: 'black'}}
-                hideNavBar
-                component={IntroVideo2}
-                title=""
-              />
-              <Scene
-                key="introVideo3"
-                sceneStyle={{backgroundColor: 'black'}}
-                hideNavBar
-                component={IntroVideo3}
                 title=""
               />
               <Scene

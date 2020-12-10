@@ -71,7 +71,7 @@ class UpdatePlayerInfo extends Component {
       this.props.addTeamCode(teamCodePost, readUser, endpoint, authToken);
     } else {
       Alert.alert(
-        'Team Code',
+        'PROMO CODE',
         'Code Must Not Be Blank.',
         [
           {
@@ -200,7 +200,7 @@ class UpdatePlayerInfo extends Component {
         <View style={{height: 10}} />
         <Input
           label="ADD NEW TEAM"
-          placeholder="Enter Team Code"
+          placeholder="ENTER PROMO CODE"
           value={newCode}
           onChangeText={(value) =>
             this.props.userUpdate({prop: 'newCode', value})

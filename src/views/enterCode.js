@@ -79,7 +79,7 @@ class EnterCode extends Component {
           {!this.state.keyBoardShowing ? (
             <View style={{flex: 1}}>
               <Text style={[styles.textStyle, {paddingHorizontal: 15}]}>
-                Enter class code if provided by your Skills Institute facility
+                Enter promo code if provided by your Skills Institute facility
               </Text>
             </View>
           ) : null}
@@ -103,8 +103,8 @@ class EnterCode extends Component {
                 style={{color: 'white', fontWeight: 'bold'}}
                 onPress={() => {
                   Linking.openURL('http://risefutbol.com/clubs');
-                }}>
-              </Text>
+                }}
+              />
             </Text>
           </View>
           {!this.state.keyBoardShowing ? (
@@ -118,7 +118,7 @@ class EnterCode extends Component {
                   marginBottom: 40,
                 }}>
                 <CustomButton onPress={() => this.addNewTeamCode()}>
-                  Submit Class Code
+                  Submit Promo Code
                 </CustomButton>
               </View>
               <View
@@ -129,7 +129,7 @@ class EnterCode extends Component {
                   justifyContent: 'center',
                   marginTop: 35,
                 }}>
-                <Header headerText="DON'T HAVE A CLASS CODE?" />
+                <Header headerText="DON'T HAVE A PROMO CODE?" />
                 <View style={{height: 20}} />
                 <CustomText
                   style={{
@@ -149,7 +149,7 @@ class EnterCode extends Component {
                     Analytics.screen('Welcome To');
                     Actions.welcomeTo();
                   }}>
-                  Proceed as individual below
+                  Proceed as Individual
                 </CustomButton>
               </View>
             </View>

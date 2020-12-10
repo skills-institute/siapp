@@ -73,26 +73,28 @@ class WelcomeTo extends Component {
               <View style={{}}>
                 <View style={{alignItems: 'center'}}>
                   <CustomText>
-                    Skills Institute is where soccer takes center stage.
+                    This revolutionary mobile app will help aspiring young
+                    soccer players master the basics, advance
                   </CustomText>
                   <CustomText>
-                    Rooted in child development theory, kids have a blast
+                    their skills and take their game to the next level!
                   </CustomText>
                   <CustomText>
-                    Players will walk away more confident, equipped for their
-                    next right step, and ready for life’s challenges on and off
-                    the field.
+                    Just like our Skills Institute Classes in facilities across
+                    the country, this app is designed to teach kids soccer
+                    through fun, skill-building exercises that promote
+                    confidence and competence –on and off the field!
                   </CustomText>
                 </View>
                 <View style={{height: 10}} />
                 <View style={{alignItems: 'center'}}>
                   <CustomText>
-                    This application guides individual players with training
-                    plans and videos to grow your skills and achieve the three
-                    pillars of Skill Institute:
+                    This application guides players with training plans and
+                    videos to grow your skills and achieve the 3 pillars of
+                    Skills Institute: Educate, Develop & Inspire.’
                   </CustomText>
                 </View>
-                <View style={{height: 10}} />
+                {/* <View style={{height: 10}} />
                 <View style={{alignItems: 'center'}}>
                   <CustomText txtStyle={{fontWeight: 'bold'}}>
                     Educate
@@ -103,7 +105,7 @@ class WelcomeTo extends Component {
                   <CustomText txtStyle={{fontWeight: 'bold'}}>
                     Inspire
                   </CustomText>
-                </View>
+                </View> */}
               </View>
             )}
           </View>
