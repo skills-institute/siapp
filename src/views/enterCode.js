@@ -78,8 +78,13 @@ class EnterCode extends Component {
         <KeyboardAwareScrollView style={{flex: 1}} scrollEnabled={false}>
           {!this.state.keyBoardShowing ? (
             <View style={{flex: 1}}>
-              <Text style={[styles.textStyle, {paddingHorizontal: 15}]}>
-                Enter promo code if provided by your Skills Institute facility
+              <Text
+                style={[
+                  styles.textStyle,
+                  {paddingHorizontal: 15, textAlign: 'center'},
+                ]}>
+                Skills Institute class participants - enter promo code that was
+                provided by your Skills Institute facility.
               </Text>
             </View>
           ) : null}
