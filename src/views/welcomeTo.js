@@ -74,11 +74,10 @@ class WelcomeTo extends Component {
                 <View style={{alignItems: 'center'}}>
                   <CustomText>
                     This revolutionary mobile app will help aspiring young
-                    soccer players master the basics, advance
+                    soccer players master the basics, advance their skills and
+                    take their game to the next level!
                   </CustomText>
-                  <CustomText>
-                    their skills and take their game to the next level!
-                  </CustomText>
+                  <View style={{height: 10}} />
                   <CustomText>
                     Just like our Skills Institute Classes in facilities across
                     the country, this app is designed to teach kids soccer
