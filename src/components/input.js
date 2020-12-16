@@ -35,6 +35,7 @@ const Input = ({
   onEndEditing,
   returnKeyType,
   blurOnSubmit,
+  onSubmitEditing,
 }) => {
   const {inputStyle, labelStyle, containerStyle} = styles;
   return (
@@ -55,6 +56,7 @@ const Input = ({
         placeholderTextColor="#94989E"
         blurOnSubmit={blurOnSubmit}
         returnKeyType={returnKeyType || 'default'}
+        onSubmitEditing={onSubmitEditing}
       />
       <View style={styles.dividerView} />
     </View>
