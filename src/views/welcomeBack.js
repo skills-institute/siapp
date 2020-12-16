@@ -147,6 +147,7 @@ class WelcomeBack extends Component {
       .then((responseJSON) => {
         console.log(responseJSON);
         if (responseJSON.error) {
+          console.log('responseJSON', responseJSON);
           this.props.loggingIn(false);
           this.props.loggedIn(false);
           this.setState({loggedIn: false});
@@ -190,7 +191,7 @@ class WelcomeBack extends Component {
             placeholder="Password"
             secureTextEntry
             value={this.props.user.password}
-            onEndEditing={() => this.logIn()}
+            onSubmitEditing={() => this.logIn()}
             onChangeText={(value) =>
               this.props.userUpdate({prop: 'password', value})
             }
