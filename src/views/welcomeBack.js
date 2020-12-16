@@ -124,6 +124,9 @@ class WelcomeBack extends Component {
   }
 
   logIn() {
+    if (this.props.user.loggingIn) {
+      return;
+    }
     this.props.loggingIn(true);
     this.props.loading(true);
     this.props.setEndpointHost(endpointHost);

@@ -18,8 +18,8 @@ class TeamIcons extends Component {
     if (teams.length === 0) {
       teams.push({
         id: 0,
-        name: 'test'
-      })
+        name: '',
+      });
     }
     return (
       <View style={styles.container}>
