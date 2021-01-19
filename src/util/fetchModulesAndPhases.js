@@ -20,7 +20,6 @@ function fetchModulesAndPhases(email, authToken, userID) {
   })
     .then(response => response.json())
     .then((responseJSON) => {
-      console.log(responseJSON);
       if (responseJSON.error) {
       } else {
         modulesAndPhases = responseJSON.data;

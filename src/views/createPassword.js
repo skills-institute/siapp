@@ -27,6 +27,7 @@ import {
 } from '../actions/userActions';
 import * as paths from '../util/apiPaths';
 import styles from './viewStyles/createPassword.style';
+import Moment from 'moment';
 
 const Intercom = require('react-native-intercom');
 
@@ -103,7 +104,6 @@ class CreatePassword extends Component {
   }
 
   createAccount() {
-    console.log('create');
     this.setState({creatingAccount: true});
     const emailAddress = this.props.user.email;
     const userPassword = this.props.user.password;
@@ -149,6 +149,14 @@ class CreatePassword extends Component {
           Keyboard.dismiss();
           this.setState({creatingAccount: false});
           this.props.loggedIn(true);
+
+          const currentMoment = new Moment();
+          const currDate = currentMoment.format('YYYY-MM-DD');
+          this.props.userUpdate({
+            prop: 'signedUp',
+            value: currDate,
+          });
+
           Analytics.screen('Enter Code');
           Actions.enterCode();
         }

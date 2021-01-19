@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   ActivityIndicator,
   Alert,
+  Platform,
 } from 'react-native';
 import {Crashlytics} from 'react-native-fabric';
 import _ from 'lodash';
@@ -45,6 +46,8 @@ import {
 import * as paths from '../util/apiPaths';
 import styles from './viewStyles/landing.style';
 import intercom from '@segment/analytics-react-native-intercom';
+import Moment from 'moment';
+import skillsMastered from '../components/skillsMastered';
 
 const Intercom = require('react-native-intercom');
 
@@ -77,6 +80,7 @@ class Landing extends Component {
       expanded: false,
       loggingIn: true,
       pullData: true,
+      unreadCount: 0,
     };
     this.xscrollView;
   }
@@ -88,21 +92,104 @@ class Landing extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
+    const {
+      user: {
+        firstName,
+        lastName,
+        price,
+        team,
+        club,
+        code,
+        lastSeen,
+        firstSeen,
+        signedUp,
+        createdAt,
+        // webSessions,
+        promoCode,
+        stripeCustomer,
+        stripePlan,
+        stripePlanPrices,
+        discountCode,
+        roleList,
+        highestPyramidLevel,
+        lastModulePlayed,
+        lastPhasePlayed,
+        dayStreak,
+        subscription,
+        skillsMastered: userSkillsMastered,
+      },
+    } = this.props;
+
     const userId = parseInt(this.props.user.id, 10);
     Analytics.setup('PCTONGGvAw7OUyyLTtskcC1SJOD66kwb', {
       trackAppLifecycleEvents: true,
       recordScreenViews: true,
       using: [intercom],
     });
-    Analytics.identify(userId.toString(), {email: this.props.user.email});
-    const activeSubscription = this.props.user.activeSubscription;
-    Intercom.registerIdentifiedUser({email: this.props.user.email});
+
+    const currentMoment = new Moment();
+    const currDate = currentMoment.format('YYYY-MM-DD');
+    const createdDate = new Moment(createdAt).format('YYYY-MM-DD');
+
+    if (!firstSeen && signedUp) {
+      this.props.userUpdate({
+        prop: 'firstSeen',
+        value: currDate,
+      });
+    }
+
+    this.props.userUpdate({
+      prop: 'lastSeen',
+      value: currDate,
+    });
+
+    // this.props.userUpdate({
+    //   prop: 'webSessions',
+    //   value: !webSessions ? 1 : webSessions + 1,
+    // });
+
+    Analytics.identify(userId.toString(), {
+      email: this.props.user.email,
+    });
+
+    Intercom.registerIdentifiedUser({
+      email: this.props.user.email,
+    });
+
+    Intercom.updateUser({
+      custom_attributes: {
+        ['First Name']: firstName,
+        ['Last Name']: lastName,
+        ['Price']: price,
+        ['Team Name']: team,
+        ['Club']: club,
+        ['Display Code']: code,
+        ['First Seen']: firstSeen,
+        ['Last Seen']: lastSeen,
+        ['Signed Up']: createdDate,
+        ['OS']: Platform.OS,
+        ['Promo Code']: promoCode,
+        ['Stripe Customer']: stripeCustomer,
+        ['Stripe Plan']: stripePlan,
+        ['Stripe Plan Price']: stripePlanPrices,
+        ['Discount Code']: discountCode,
+        ['Subscription']: subscription,
+        ['Role List']: roleList,
+        ['day_streak']: dayStreak,
+        ['skills_mastered']: userSkillsMastered,
+        ['highest_pyramid_level']: highestPyramidLevel,
+        ['last_module_played']: lastModulePlayed,
+        ['last_phase_played']: lastPhasePlayed,
+      },
+      name: this.props.user.fullName,
+    });
+
     Intercom.addEventListener(
       Intercom.Notifications.UNREAD_COUNT,
       this.onUnreadChange,
     );
-  }
+  };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.pullData) {
@@ -147,7 +234,7 @@ class Landing extends Component {
   }
 
   onUnreadChange = ({count}) => {
-    // console.log(count);
+    this.setState({unreadCount: count});
   };
 
   pullAllBackEndData() {
@@ -205,12 +292,40 @@ class Landing extends Component {
                 onPress={() => {
                   Intercom.displayConversationsList();
                 }}>
-                <View style={styles.iconView}>
-                  <Image
-                    resizeMode="contain"
-                    style={{marginLeft: 20, height: 22, width: 22}}
-                    source={require('../../assets/Icon/Notifications.png')}
-                  />
+                <View
+                  style={{
+                    marginLeft: 20,
+                    position: 'relative',
+                    height: 22,
+                    width: 22,
+                  }}>
+                  <View style={styles.iconView}>
+                    <Image
+                      resizeMode="contain"
+                      style={{height: 22, width: 22}}
+                      source={require('../../assets/Icon/Notifications.png')}
+                    />
+                  </View>
+                  <View
+                    style={{
+                      display: this.state.unreadCount === 0 ? 'none' : 'flex',
+                      borderRadius: 10,
+                      backgroundColor: 'red',
+                      width: 20,
+                      height: 20,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      position: 'absolute',
+                      bottom: -10,
+                      right: -10,
+                    }}>
+                    <Text
+                      style={{
+                        color: 'white',
+                      }}>
+                      {this.state.unreadCount}
+                    </Text>
+                  </View>
                 </View>
               </TouchableWithoutFeedback>
               <View
@@ -374,7 +489,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setHeader(headers));
   },
   readEndpoint: (endpoint) => {
-    console.log('endpoint', endpoint);
     dispatch(readEndpoint(endpoint))
       .then((response) => {
         if (endpoint === 'phase_attempts') {
@@ -384,7 +498,6 @@ const mapDispatchToProps = (dispatch) => ({
         }
       })
       .catch((e) => {
-        console.log('e', e);
         Alert.alert('Error', 'Unable to Read Exercise Data.', [{text: 'OK'}], {
           cancelable: false,
         });

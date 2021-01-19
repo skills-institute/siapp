@@ -559,7 +559,6 @@ class Workout extends Component {
                         if (!currentExercise) {
                           return;
                         }
-                        console.log('exercise', exercise);
                         this.rateExercise(
                           rating,
                           selectedPhase,

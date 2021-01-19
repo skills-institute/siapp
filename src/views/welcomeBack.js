@@ -145,9 +145,8 @@ class WelcomeBack extends Component {
     })
       .then((response) => response.json())
       .then((responseJSON) => {
-        console.log(responseJSON);
+        console.log('responseJSON', responseJSON);
         if (responseJSON.error) {
-          console.log('responseJSON', responseJSON);
           this.props.loggingIn(false);
           this.props.loggedIn(false);
           this.setState({loggedIn: false});
@@ -264,7 +263,6 @@ const mapDispatchToProps = (dispatch) => ({
   readEndpoint: (endpoint) => {
     dispatch(readEndpoint(endpoint))
       .then((response) => {
-        console.log(response);
         dispatch(readPyramidData(response));
       })
       .catch(() => {

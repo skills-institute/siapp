@@ -57,11 +57,11 @@ class AgeVerificationFailed extends Component {
           <CustomButton
             onPress={() => {
               Linking.openURL(
-                'mailto:info@risefutbol.com?subject=Parental Consent&body=body',
+                'mailto:appsupport@lilkickers.com?subject=Parental Consent&body=body',
               );
             }}>
             {' '}
-            info@risefutbol.com{' '}
+            appsupport@lilkickers.com{' '}
           </CustomButton>
         </View>
       </LinearGradient>
