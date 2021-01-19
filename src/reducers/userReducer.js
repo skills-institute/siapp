@@ -152,6 +152,19 @@ export default (state = funcDefaultState, action) => {
         activeTrial: accountAge < 15,
         loggedIn: true,
         purchasedPackages: action.payload.userInfo.archieved_user_payments,
+        promoCode: action.payload.userInfo.my_promo_codes,
+        createdAt: action.payload.userInfo.created_at,
+        stripeCustomer: action.payload.userInfo.stripe_customer_id?.to_s,
+        stripePlan: action.payload.userInfo.my_stripe_plans,
+        stripePlanPrices: action.payload.userInfo.my_stripe_plan_prices,
+        price: action.payload.userInfo.my_stripe_plan_prices,
+        discountCode: action.payload.userInfo.my_stripe_plan_discount_codes,
+        subscription: action.payload.userInfo.subscription,
+        roleList: action.payload.userInfo.role_list,
+        highestPyramidLevel:
+          action.payload.userInfo.highest_pyramid_level_achieved,
+        lastModulePlayed: action.payload.userInfo.last_module_played,
+        lastPhasePlayed: action.payload.userInfo.last_phase_played,
       };
     }
 

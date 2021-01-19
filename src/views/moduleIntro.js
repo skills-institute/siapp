@@ -91,7 +91,6 @@ class ModuleIntro extends Component {
     });
     overallRating = totalExercises === 0 ? 0 : (totalRating / totalExercises).toFixed(1);
 
-    console.log('this.props.moduleInfo.module', this.props.moduleInfo.module);
     return (
       <LinearGradient
         colors={['#000000', '#131313', '#272727']}

@@ -38,7 +38,6 @@ class athletefitapp extends Component {
   }
 
   componentDidMount() {
-    console.log('Analytics', Analytics);
     Analytics.screen('Launch');
   }
 
