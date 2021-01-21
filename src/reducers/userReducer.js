@@ -165,6 +165,8 @@ export default (state = funcDefaultState, action) => {
           action.payload.userInfo.highest_pyramid_level_achieved,
         lastModulePlayed: action.payload.userInfo.last_module_played,
         lastPhasePlayed: action.payload.userInfo.last_phase_played,
+        myClubs: action.payload.userInfo.my_clubs_name,
+        myTeams: action.payload.userInfo.my_teams_name,
       };
     }
 
