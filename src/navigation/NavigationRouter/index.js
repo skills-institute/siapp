@@ -140,7 +140,7 @@ class NavigationRouter extends Component {
                 key="landing"
                 sceneStyle={{backgroundColor: 'black'}}
                 hideNavBar
-                type="reset"
+                // type="reset"
                 component={Landing}
                 title=""
               />
