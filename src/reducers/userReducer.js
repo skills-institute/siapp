@@ -130,6 +130,7 @@ export default (state = funcDefaultState, action) => {
           };
         },
       );
+
       return {
         ...state,
         progressView,

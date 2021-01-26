@@ -18,7 +18,6 @@ import {
   setEndpointPath,
   setHeader,
   readEndpoint,
-  createResource,
 } from 'redux-json-api';
 import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
@@ -47,7 +46,6 @@ import * as paths from '../util/apiPaths';
 import styles from './viewStyles/landing.style';
 import intercom from '@segment/analytics-react-native-intercom';
 import Moment from 'moment';
-import skillsMastered from '../components/skillsMastered';
 
 const Intercom = require('react-native-intercom');
 
@@ -85,27 +83,23 @@ class Landing extends Component {
     this.xscrollView;
   }
 
-  componentWillMount() {
-    if (this.state.pullData) {
-      this.pullAllBackEndData();
-      this.setState({pullData: false, pulledData: true});
+  componentDidUpdate = (prevProps) => {
+    if (JSON.stringify(prevProps.user) !== JSON.stringify(this.props.user)) {
+      this.updateIntercomData();
     }
-  }
+  };
 
-  componentDidMount = () => {
+  updateIntercomData = () => {
     const {
       user: {
         firstName,
         lastName,
         price,
-        team,
-        club,
         code,
         lastSeen,
         firstSeen,
         signedUp,
         createdAt,
-        // webSessions,
         promoCode,
         stripeCustomer,
         stripePlan,
@@ -123,13 +117,6 @@ class Landing extends Component {
       },
     } = this.props;
 
-    const userId = parseInt(this.props.user.id, 10);
-    Analytics.setup('PCTONGGvAw7OUyyLTtskcC1SJOD66kwb', {
-      trackAppLifecycleEvents: true,
-      recordScreenViews: true,
-      using: [intercom],
-    });
-
     const currentMoment = new Moment();
     const currDate = currentMoment.format('YYYY-MM-DD');
     const createdDate = new Moment(createdAt).format('YYYY-MM-DD');
@@ -144,15 +131,6 @@ class Landing extends Component {
     this.props.userUpdate({
       prop: 'lastSeen',
       value: currDate,
-    });
-
-    // this.props.userUpdate({
-    //   prop: 'webSessions',
-    //   value: !webSessions ? 1 : webSessions + 1,
-    // });
-
-    Analytics.identify(userId.toString(), {
-      email: this.props.user.email,
     });
 
     Intercom.registerIdentifiedUser({
@@ -194,17 +172,32 @@ class Landing extends Component {
     );
   };
 
+  componentWillMount() {
+    if (this.state.pullData) {
+      this.pullAllBackEndData();
+      this.setState({pullData: false, pulledData: true});
+    }
+  }
+
+  componentDidMount = () => {
+    const userId = parseInt(this.props.user.id, 10);
+    Analytics.setup('PCTONGGvAw7OUyyLTtskcC1SJOD66kwb', {
+      trackAppLifecycleEvents: true,
+      recordScreenViews: true,
+      using: [intercom],
+    });
+
+    Analytics.identify(userId.toString(), {
+      email: this.props.user.email,
+    });
+  };
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.pullData) {
       Actions.refresh({pullData: false});
       this.pullAllBackEndData();
     }
   }
-  shouldComponentUpdate() {
-    return true;
-  }
-
-  componentWillUpdate() {}
 
   componentWillUnmount() {
     Intercom.removeEventListener(
@@ -516,7 +509,8 @@ const mapDispatchToProps = (dispatch) => ({
           logUserIn(response.data.attributes, response.data.id, authToken),
         );
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log('err', err);
         Alert.alert('Error', 'Unable to Read User Data.', [{text: 'OK'}], {
           cancelable: false,
         });
