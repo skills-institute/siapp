@@ -57,6 +57,7 @@ class WelcomeBack extends Component {
       loggedIn: false,
     };
   }
+
   componentWillMount() {
     this.props.loggingIn(false);
     if (this.props.user.loggedIn) {

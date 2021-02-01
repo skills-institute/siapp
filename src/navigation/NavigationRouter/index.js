@@ -72,6 +72,7 @@ class NavigationRouter extends Component {
               />
               <Scene
                 key="home"
+                type="reset"
                 initial
                 sceneStyle={{backgroundColor: 'black'}}
                 hideNavBar
