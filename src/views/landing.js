@@ -84,7 +84,10 @@ class Landing extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    if (JSON.stringify(prevProps.user) !== JSON.stringify(this.props.user)) {
+    if (
+      JSON.stringify(prevProps.user) !== JSON.stringify(this.props.user) &&
+      this.props.navigationState.name === 'landing'
+    ) {
       this.updateIntercomData();
     }
   };
@@ -145,7 +148,7 @@ class Landing extends Component {
         ['User']: `${firstName} ${lastName}`,
         ['Team Name']: myTeams,
         ['Club']: myClubs,
-        ['Display Code']: code,
+        ['Display Code']: promoCode,
         ['First Seen']: firstSeen,
         ['Last Seen']: lastSeen,
         ['Signed Up']: createdDate,
