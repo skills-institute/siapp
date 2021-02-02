@@ -1,4 +1,5 @@
 export const logUserIn = (userInfo, userId, authToken) => {
+  console.log('userInfo', userInfo);
   return {
     type: 'LOG_USER_IN',
     payload: {userInfo, userId, authToken},

@@ -105,6 +105,8 @@ class Landing extends Component {
         createdAt,
         promoCode,
         stripeCustomer,
+        stripeCustomerId,
+        stripeCustomerEmail,
         stripePlan,
         stripePlanPrices,
         discountCode,
@@ -140,6 +142,8 @@ class Landing extends Component {
       email: this.props.user.email,
     });
 
+    console.log('this.props', this.props);
+
     Intercom.updateUser({
       custom_attributes: {
         ['First Name']: firstName,
@@ -154,6 +158,8 @@ class Landing extends Component {
         ['OS']: Platform.OS,
         ['Promo Code']: promoCode,
         ['Stripe Customer']: stripeCustomer,
+        // ['Stripe Customer Id']: stripeCustomerId,
+        ['Stripe Customer Email']: stripeCustomerEmail,
         ['Stripe Plan']: stripePlan,
         ['Stripe Plan Price']: stripePlanPrices,
         ['Discount Code']: discountCode,
