@@ -142,11 +142,11 @@ class Landing extends Component {
 
     Intercom.updateUser({
       custom_attributes: {
-        ['First']: firstName,
-        ['Last']: lastName,
+        ['First Name']: firstName,
+        ['Last Name']: lastName,
         ['Price']: price,
-        ['User']: `${firstName} ${lastName}`,
-        ['Team']: myTeams,
+        ['Name']: `${firstName} ${lastName}`,
+        ['Team Name']: myTeams,
         ['Club']: myClubs,
         ['First Seen']: firstSeen,
         ['Last Seen']: lastSeen,
