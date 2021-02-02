@@ -146,7 +146,6 @@ class WelcomeBack extends Component {
     })
       .then((response) => response.json())
       .then((responseJSON) => {
-        console.log('responseJSON', responseJSON);
         if (responseJSON.error) {
           this.props.loggingIn(false);
           this.props.loggedIn(false);
